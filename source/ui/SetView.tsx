@@ -37,11 +37,21 @@ const SetView: FC = () => {
 	}, [])
 
 	const onSelectAction = (item: any) => {
+		setTips({ isShow: false })
+		tipsRef.current.clear()
 		setActionType(item.value)
 		if (item.value === "add") {
 			setSetup(2)
 		} else if (["delete", "update"].includes(item.value)) {
-			setSetup(1)
+			if ((setting.list || []).length === 0) {
+				setTips({
+					isShow: true,
+					type: "info",
+					message: "您还没有通知，请先添加一个吧。",
+				})
+			} else {
+				setSetup(1)
+			}
 		} else if (["import"].includes(item.value)) {
 			setSetup(3)
 		} else if (item.value === "export") {
