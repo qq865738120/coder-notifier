@@ -39,7 +39,7 @@ const SetView: FC = () => {
 			setSetup(2)
 		} else if (["delete", "update"].includes(item.value)) {
 			setSetup(1)
-		} else if (["query", "import"].includes(item.value)) {
+		} else if (["import"].includes(item.value)) {
 			setSetup(3)
 		} else if (item.value === "export") {
 			setSetup(3)
@@ -48,6 +48,15 @@ const SetView: FC = () => {
 				type: "success",
 				message: "导出成功",
 			})
+		} else if (item.value === "query") {
+			setSetup(3)
+			if ((setting.list || []).length === 0) {
+				setTips({
+					isShow: true,
+					type: "info",
+					message: "您还没有设置通知，请先添加一条通知吧。",
+				})
+			}
 		}
 	}
 
@@ -205,12 +214,14 @@ const SetView: FC = () => {
 				></SetForm>
 			)}
 
-			{setup === 3 && actionType === "query" && (
-				<MyTable
-					title='通知配置列表'
-					data={(setting.list || []) as any}
-				></MyTable>
-			)}
+			{setup === 3 &&
+				actionType === "query" &&
+				((setting.list || []).length > 0 ? (
+					<MyTable
+						title='通知配置列表'
+						data={(setting.list || []) as any}
+					></MyTable>
+				) : null)}
 
 			{setup === 3 && actionType === "import" && (
 				<ImportSet
@@ -220,7 +231,7 @@ const SetView: FC = () => {
 			)}
 
 			{setup === 3 && actionType === "export" && (
-				<Box marginTop={1} borderColor='white' borderStyle="classic">
+				<Box marginTop={1} borderColor='white' borderStyle='classic'>
 					<SyntaxHighlight code={JSON.stringify(setting)} language='JSON' />
 				</Box>
 			)}
