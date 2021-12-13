@@ -65,7 +65,7 @@ const SaveView: FC = () => {
 						setTips({
 							isShow: true,
 							type: "error",
-							message: "启动coder-notifier进程失败",
+							message: "启动coder-notifier进程失败，请检查是否安装成功。",
 						})
 						setTimeout(() => {
 							process.exit(1)

@@ -1,6 +1,22 @@
 {
 	"name": "coder-notifier",
-	"version": "0.0.3",
+	"version": "0.0.1-alpha.0",
+	"description": "一款定时提醒工具，如果你经常忘记喝水休息，这很管用。",
+	"repository": "qq865738120/coder-notifier",
+	"author": {
+		"name": "code_xia",
+		"email": "zhengwenjun1994@gmail.com",
+		"url": "https://github.com/qq865738120"
+	},
+	"contributors": [
+		"code_xia <zhengwenjun1994@gmail.com>"
+	],
+	"keywords": [
+		"notifier",
+		"coder",
+		"cli",
+		"node"
+	],
 	"license": "MIT",
 	"bin": "dist/cli.js",
 	"engines": {
