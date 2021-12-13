@@ -129,7 +129,7 @@ const SetForm: FC<ISetFormProps> = ({
 			case "custom":
 				setSetup(7)
 				onInfo(
-					"不会写？举个栗子：每30分钟通知一次（* 0/30 * * * ?）。还是不会？在线生成Cron表达式（ https://www.bejson.com/othertools/cron ）"
+					"不会写？举个栗子：每30分钟通知一次（0 0/30 * * * ?）。还是不会？在线生成Cron表达式（ https://www.bejson.com/othertools/cron ）"
 				)
 				break
 			default:

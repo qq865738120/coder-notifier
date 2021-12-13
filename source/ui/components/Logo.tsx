@@ -11,7 +11,7 @@ export interface ILogoProps {
 
 const Logo: FC<ILogoProps> = () => {
 	return (
-		<Static items={['v0.0.1-alpha.3']}>
+		<Static items={['v0.0.1-alpha.4']}>
 			{(item) => (
 				<Box key={item} flexDirection='column' marginBottom={2}>
 					<Gradient name='rainbow'>
