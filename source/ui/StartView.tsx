@@ -27,53 +27,61 @@ const StartView: FC = () => {
 	}, [])
 
 	const doStart = () => {
-		// eslint-disable-next-line @typescript-eslint/no-extra-semi
-		;(setting.list || [])
-			.filter((set: ISetForm) => set.isTurnOn)
-			.map((set: ISetForm) => {
-				let scheduleStr = ""
-				if (set.cycle === "day") {
-					scheduleStr = `${set.time.split(":").reverse().join(" ")} * * *`
-				} else if (set.cycle === "week") {
-					scheduleStr = `${set.time.split(":").reverse().join(" ")} ? * ${
-						set.week
-					}`
-				} else if (set.cycle === 'custom') {
-					scheduleStr = set.schedule
-				}
-				schedule.scheduleJob(scheduleStr, async () => {
-					notifier.notify(
-						{
-							title: set.title,
-							message: set.message,
-							icon: path.join(__dirname, "../../assets/icon.jpeg"),
-							sound: true,
-							wait: true,
-						},
-						(error: any) => {
-							if (error) {
-								setTips({
-									isShow: true,
-									type: "error",
-									message: "发送通知出错",
-								})
-							} else {
-								setTips({
-									isShow: true,
-									type: "success",
-									message: "发送通知成功",
-								})
-							}
-						}
-					)
-				})
+		if ((setting.list || []).length === 0) {
+			setTips({
+				isShow: true,
+				type: "info",
+				message: "没有发现通知，请先设置通知。",
 			})
+		} else {
+			// eslint-disable-next-line @typescript-eslint/no-extra-semi
+			;(setting.list || [])
+				.filter((set: ISetForm) => set.isTurnOn)
+				.map((set: ISetForm) => {
+					let scheduleStr = ""
+					if (set.cycle === "day") {
+						scheduleStr = `${set.time.split(":").reverse().join(" ")} * * *`
+					} else if (set.cycle === "week") {
+						scheduleStr = `${set.time.split(":").reverse().join(" ")} ? * ${
+							set.week
+						}`
+					} else if (set.cycle === "custom") {
+						scheduleStr = set.schedule
+					}
+					schedule.scheduleJob(scheduleStr, async () => {
+						notifier.notify(
+							{
+								title: set.title,
+								message: set.message,
+								icon: path.join(__dirname, "../../assets/icon.jpeg"),
+								sound: true,
+								wait: true,
+							},
+							(error: any) => {
+								if (error) {
+									setTips({
+										isShow: true,
+										type: "error",
+										message: "发送通知出错",
+									})
+								} else {
+									setTips({
+										isShow: true,
+										type: "success",
+										message: "发送通知成功",
+									})
+								}
+							}
+						)
+					})
+				})
 
-		setTips({
-			isShow: true,
-			type: "success",
-			message: "启动成功",
-		})
+			setTips({
+				isShow: true,
+				type: "success",
+				message: "启动成功",
+			})
+		}
 	}
 
 	return (
