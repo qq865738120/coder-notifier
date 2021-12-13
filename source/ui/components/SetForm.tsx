@@ -183,7 +183,7 @@ const SetForm: FC<ISetFormProps> = ({
 				).test(value)
 			) {
 				setSchedule(value)
-				setSetup(6)
+				setSetup(5)
 			} else {
 				onError("日程格式不正确")
 			}

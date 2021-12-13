@@ -2,8 +2,10 @@
 const fsPath = require("fs-path")
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require("fs")
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require("path")
 
-const filePath = "./setting.json"
+const filePath = path.join(__dirname, `../../../../.cache/coder-notifier/setting.json`)
 
 const saveSetting = (obj: any) => {
 	fsPath.writeFileSync(filePath, JSON.stringify(obj))

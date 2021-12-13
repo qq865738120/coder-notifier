@@ -9,6 +9,9 @@ import MyTable from "./components/MyTable"
 import ImportSet from "./components/ImportSet"
 import { checkSetting } from "./common/utils"
 import SyntaxHighlight from "ink-syntax-highlight"
+import theme from "./common/theme"
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const ncp = require("copy-paste");
 
 const SetView: FC = () => {
 	// 步骤
@@ -43,10 +46,12 @@ const SetView: FC = () => {
 			setSetup(3)
 		} else if (item.value === "export") {
 			setSetup(3)
-			setTips({
-				isShow: true,
-				type: "success",
-				message: "导出成功",
+			ncp.copy(JSON.stringify(setting), () => {
+				setTips({
+					isShow: true,
+					type: "success",
+					message: "导出成功，已经帮您复制到剪切板。",
+				})
 			})
 		} else if (item.value === "query") {
 			setSetup(3)
@@ -142,6 +147,7 @@ const SetView: FC = () => {
 				})
 			}
 		} catch (error) {
+			console.error(error);
 			setTips({
 				isShow: true,
 				type: "error",
@@ -231,7 +237,7 @@ const SetView: FC = () => {
 			)}
 
 			{setup === 3 && actionType === "export" && (
-				<Box marginTop={1} borderColor='white' borderStyle='classic'>
+				<Box marginTop={1} borderStyle="classic" borderColor={theme.mainColor} padding={1}>
 					<SyntaxHighlight code={JSON.stringify(setting)} language='JSON' />
 				</Box>
 			)}

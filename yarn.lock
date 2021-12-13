@@ -865,6 +865,11 @@
     "normalize-path" "^3.0.0"
     "picomatch" "^2.0.4"
 
+"arch@^2.2.0":
+  "integrity" "sha512-Of/R0wqp83cgHozfIYLbBMnej79U/SVGOOyuB3VVFv1NRM/PSFMK12x9KVtiYzJqmnU5WR2qp0Z5rHb7sWGnFQ=="
+  "resolved" "https://registry.npmjs.org/arch/-/arch-2.2.0.tgz"
+  "version" "2.2.0"
+
 "argparse@^1.0.7":
   "integrity" "sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg=="
   "resolved" "https://registry.npmjs.org/argparse/-/argparse-1.0.10.tgz"
@@ -1461,7 +1466,7 @@
     "parse5-htmlparser2-tree-adapter" "^6.0.0"
     "yargs" "^16.0.0"
 
-"cli-spinners@^2.3.0", "cli-spinners@^2.5.0", "cli-spinners@^2.6.0":
+"cli-spinners@^2.3.0", "cli-spinners@^2.5.0":
   "integrity" "sha512-t+4/y50K/+4xcCRosKkA7W4gTr1MySvLV0q+PxmG7FJ5g+66ChKurYjxBCjHggHH3HA5Hh9cy+lcUGWDqVH+4Q=="
   "resolved" "https://registry.npmjs.org/cli-spinners/-/cli-spinners-2.6.0.tgz"
   "version" "2.6.0"
@@ -1480,6 +1485,15 @@
   dependencies:
     "slice-ansi" "^3.0.0"
     "string-width" "^4.2.0"
+
+"clipboardy@^3.0.0":
+  "integrity" "sha512-Su+uU5sr1jkUy1sGRpLKjKrvEOVXgSgiSInwa/qeID6aJ07yh+5NWc3h2QfjHjBnfX4LhtFcuAWKUsJ3r+fjbg=="
+  "resolved" "https://registry.npmjs.org/clipboardy/-/clipboardy-3.0.0.tgz"
+  "version" "3.0.0"
+  dependencies:
+    "arch" "^2.2.0"
+    "execa" "^5.1.1"
+    "is-wsl" "^2.2.0"
 
 "cliui@^7.0.2":
   "integrity" "sha512-OcRE68cOsVMXp1Yvonl/fzkQOyjLSu/8bhPDfQt0e0/Eb283TKP20Fs2MqoPsr9SwA595rRCA+QMzYc9nBP+JQ=="
@@ -1626,6 +1640,15 @@
   "integrity" "sha1-Z29us8OZl8LuGsOpJP1hJHSPV40="
   "resolved" "https://registry.npmjs.org/copy-descriptor/-/copy-descriptor-0.1.1.tgz"
   "version" "0.1.1"
+
+"copy-paste@^1.3.0":
+  "integrity" "sha1-p+bEocKP3t8rCB5yuX3y75X0ce0="
+  "resolved" "https://registry.npmjs.org/copy-paste/-/copy-paste-1.3.0.tgz"
+  "version" "1.3.0"
+  dependencies:
+    "iconv-lite" "^0.4.8"
+  optionalDependencies:
+    "sync-exec" "~0.6.x"
 
 "core-assert@^0.2.0":
   "integrity" "sha1-+F4s+b/tKPdzzIs/pcW2m9wC/j8="
@@ -2436,7 +2459,7 @@
   "resolved" "https://registry.npmjs.org/events/-/events-3.3.0.tgz"
   "version" "3.3.0"
 
-"execa@^5.0.0":
+"execa@^5.0.0", "execa@^5.1.1":
   "integrity" "sha512-8uSpZZocAZRBAPIEINJj3Lo9HyGitllczc27Eh5YYojjMFMn8yHMDMaUHE2Jqfq05D/wucwI4JGURyXt1vchyg=="
   "resolved" "https://registry.npmjs.org/execa/-/execa-5.1.1.tgz"
   "version" "5.1.1"
@@ -3055,7 +3078,7 @@
   "resolved" "https://registry.npmjs.org/human-signals/-/human-signals-2.1.0.tgz"
   "version" "2.1.0"
 
-"iconv-lite@^0.4.4", "iconv-lite@0.4.24":
+"iconv-lite@^0.4.4", "iconv-lite@^0.4.8", "iconv-lite@0.4.24":
   "integrity" "sha1-ICK0sl+93CHS9SSXSkdKr+czkIs="
   "resolved" "https://registry.nlark.com/iconv-lite/download/iconv-lite-0.4.24.tgz"
   "version" "0.4.24"
@@ -3198,7 +3221,7 @@
     "figures" "^3.2.0"
     "lodash.isequal" "^4.5.0"
 
-"ink-spinner@^4.0.1", "ink-spinner@^4.0.2":
+"ink-spinner@^4.0.2":
   "integrity" "sha512-vQGmhWUEh3IG1IxK1Hl2w6RfH6aaRIJWw9lrG8CvFFyrQ23UpJ8GClJs5/sFBxkNvsrrK9sKNEGlGnsqTYiUww=="
   "resolved" "https://registry.npmjs.org/ink-spinner/-/ink-spinner-4.0.2.tgz"
   "version" "4.0.2"
@@ -3218,16 +3241,6 @@
   "version" "3.0.0"
   dependencies:
     "object-hash" "^2.0.3"
-
-"ink-task-list@^1.1.0":
-  "integrity" "sha1-EajEtpbNZNTfQUdDYQmndKNfeec="
-  "resolved" "https://registry.npmmirror.com/ink-task-list/download/ink-task-list-1.1.0.tgz"
-  "version" "1.1.0"
-  dependencies:
-    "cli-spinners" "^2.6.0"
-    "figures" "^3.2.0"
-    "ink-spinner" "^4.0.1"
-    "prop-types" "^15.7.2"
 
 "ink-testing-library@^2.1.0":
   "integrity" "sha512-7TNlOjJlJXB33vG7yVa+MMO7hCjaC1bCn+zdpSjknWoLbOWMaFdKc7LJvqVkZ0rZv2+akhjXPrcR/dbxissjUw=="
@@ -5931,6 +5944,11 @@
   dependencies:
     "has-flag" "^4.0.0"
     "supports-color" "^7.0.0"
+
+"sync-exec@~0.6.x":
+  "integrity" "sha1-cX0izFPwzh3vVZQ2LzqJouu5EQU="
+  "resolved" "https://registry.npmjs.org/sync-exec/-/sync-exec-0.6.2.tgz"
+  "version" "0.6.2"
 
 "systeminformation@^5.7":
   "integrity" "sha512-hbJtPsG63PCst4PLXFq8hycbkeR5oGDquRowfLK0gNX7nJ1qx3tCbsWu83OL4GP1dkcLMKsVooLUn5x2K1Epgg=="
