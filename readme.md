@@ -70,6 +70,10 @@ $ coder-notifier start
 
     > 可以使用 `coder-notifier stop` 命令停止掉所有进程，然后再运行一次 `coder-notifier save` 命令。
 
+5. 在Windows系统下多次运行 `coder-notifier save` 会打开一个新窗口。
+
+    > 因为Windows系统机制导致隐藏的窗口无法发送通知，所以需要保持窗口为打开状态。
+
 
 ## 功能进展
 - [x] 通知功能

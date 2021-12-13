@@ -1,6 +1,6 @@
 {
 	"name": "coder-notifier",
-	"version": "0.0.1-alpha.4",
+	"version": "0.0.1-alpha.5",
 	"description": "一款定时提醒工具，如果你经常忘记喝水休息，这很管用。",
 	"repository": "qq865738120/coder-notifier",
 	"author": {
@@ -32,7 +32,7 @@
 		"dist/",
 		"assets/",
 		"ecosystem.config.json",
-		"win-save.bat"
+		"win-save.vbs"
 	],
 	"dependencies": {
 		"copy-paste": "^1.3.0",

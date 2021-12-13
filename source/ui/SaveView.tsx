@@ -165,8 +165,13 @@ const SaveView: FC = () => {
 		})
 		wincmd.isAdminUser((isAdmin: any) => {
 			if (isAdmin) {
-				const batLinkPath = path.join("C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\win-save-link.bat")
-				const batPath = path.join(__dirname, "../../win-save.bat")
+				const result =shell.exec('npm root -g', {
+					silent: true
+				})
+				const tempArr = result.stdout.split("\\")
+				tempArr.pop()
+				const batLinkPath = path.join("C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\win-save-link.vbs")
+				const batPath = path.join(...tempArr, "node_modules/coder-notifier/win-save.vbs")
 				if (!fs.existsSync(batLinkPath)) {
 					fs.symlinkSync(batPath, batLinkPath, 'file')
 					setTips({
@@ -175,9 +180,9 @@ const SaveView: FC = () => {
 						message: "保存开机启动项成功",
 					})
 				}
-				shell.exec(batPath, {
-					silent: true,
-				})
+				
+				
+				shell.exec(batPath)
 				setTips({
 					isShow: true,
 					type: "success",

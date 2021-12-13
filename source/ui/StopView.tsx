@@ -103,7 +103,7 @@ const StopView: FC = () => {
 	const stopToWin = () => {
 		wincmd.isAdminUser((isAdmin: any) => {
 			if (isAdmin) {
-				const batLinkPath = path.join("C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\win-save-link.bat")
+				const batLinkPath = path.join("C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\win-save-link.vbs")
 				if (fs.existsSync(batLinkPath)) {
 					fs.rmSync(batLinkPath)
 					setTips({
