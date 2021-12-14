@@ -1,6 +1,6 @@
 {
 	"name": "coder-notifier",
-	"version": "0.0.1-alpha.5",
+	"version": "0.0.1-alpha.6",
 	"description": "一款定时提醒工具，如果你经常忘记喝水休息，这很管用。",
 	"repository": "qq865738120/coder-notifier",
 	"author": {
@@ -52,7 +52,6 @@
 		"meow": "^9.0.0",
 		"node-notifier": "^10.0.0",
 		"node-schedule": "^2.1.0",
-		"node-windows": "^1.0.0-beta.6",
 		"object-hash": "^2.2.0",
 		"omelette": "^0.4.17",
 		"pm2": "^5.1.2",

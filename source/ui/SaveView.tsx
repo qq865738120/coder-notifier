@@ -8,11 +8,9 @@ import MyTable from "./components/MyTable"
 import Loading from "./components/Loading"
 import { readSetting } from "./common/settingHelper"
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const wincmd = require('node-windows');
+const path = require("path")
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const path = require('path')
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const fs = require('fs')
+const fs = require("fs")
 
 const setting = readSetting() || {}
 
@@ -26,7 +24,7 @@ const SaveView: FC = () => {
 	// pm2进程表格
 	const [pm2List, setPm2List] = useState<any>([])
 	const [loadingOption, setLoadingOption] = useState({
-		isLoading: process.platform !== 'win32',
+		isLoading: process.platform !== "win32",
 		text: "正在安装pm2",
 	})
 
@@ -39,9 +37,9 @@ const SaveView: FC = () => {
 				message: "没有发现通知，请先设置通知。",
 			})
 		} else {
-			if (process.platform === 'darwin') {
+			if (process.platform === "darwin") {
 				saveToOSX()
-			} else if (process.platform === 'win32') {
+			} else if (process.platform === "win32") {
 				saveToWin()
 			} else {
 				setTips({
@@ -50,7 +48,6 @@ const SaveView: FC = () => {
 					message: "暂时不支持该系统。",
 				})
 			}
-
 		}
 
 		return () => {
@@ -163,45 +160,36 @@ const SaveView: FC = () => {
 			type: "success",
 			message: "",
 		})
-		wincmd.isAdminUser((isAdmin: any) => {
-			if (isAdmin) {
-				const result =shell.exec('npm root -g', {
-					silent: true
-				})
-				const tempArr = result.stdout.split("\\")
-				tempArr.pop()
-				const batLinkPath = path.join("C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\win-save-link.vbs")
-				const batPath = path.join(...tempArr, "node_modules/coder-notifier/win-save.vbs")
-				if (!fs.existsSync(batLinkPath)) {
-					fs.symlinkSync(batPath, batLinkPath, 'file')
-					setTips({
-						isShow: true,
-						type: "success",
-						message: "保存开机启动项成功",
-					})
-				}
-				
-				
-				shell.exec(batPath)
-				setTips({
-					isShow: true,
-					type: "success",
-					message: "启动成功",
-				})
-				setTimeout(() => {
-					process.exit(0)
-				}, 0)
-			} else {
-				setTips({
-					isShow: true,
-					type: "error",
-					message: "请使用管理员身份运行",
-				})
-				setTimeout(() => {
-					process.exit(1)
-				}, 0)
-			}
-		});
+		const result = shell.exec("npm root -g", {
+			silent: true,
+		})
+		const tempArr = result.stdout.split("\\")
+		tempArr.pop()
+		const batLinkPath = path.join(
+			"C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\win-save-link.vbs"
+		)
+		const batPath = path.join(
+			...tempArr,
+			"node_modules/coder-notifier/win-save.vbs"
+		)
+		if (!fs.existsSync(batLinkPath)) {
+			fs.symlinkSync(batPath, batLinkPath, "file")
+			setTips({
+				isShow: true,
+				type: "success",
+				message: "保存开机启动项成功",
+			})
+		}
+
+		shell.exec(batPath)
+		setTips({
+			isShow: true,
+			type: "success",
+			message: "启动成功",
+		})
+		setTimeout(() => {
+			process.exit(0)
+		}, 0)
 	}
 
 	return (
